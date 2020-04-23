@@ -37,10 +37,10 @@ class EmailSender:
 
 
             # creates SMTP session
-            self.smtp = smtplib.SMTP('smtp.gmail.com', 587)
+            self.smtp = smtplib.SMTP_SSL('smtp.gmail.com', 465)
 
             # start TLS for security
-            self.smtp.starttls()
+            #self.smtp.starttls()
 
             # Authentication
             self.smtp.login(self.msg['From'], self.configuration['PASSWORD'])
@@ -89,10 +89,10 @@ class EmailSender:
 
 
                 # creates SMTP session
-                self.smtp = smtplib.SMTP('smtp.gmail.com', 587)
+                self.smtp = smtplib.SMTP_SSL('smtp.gmail.com', 465)
 
                 # start TLS for security
-                self.smtp.starttls()
+                #self.smtp.starttls()
 
                 # Authentication
                 self.smtp.login(self.msg['From'], self.configuration['PASSWORD'])
