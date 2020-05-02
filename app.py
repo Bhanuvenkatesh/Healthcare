@@ -62,8 +62,8 @@ def processRequest(req):
         }
     if (intent == 'Welcome_Intent'):
         return {
-            "fulfillmentText":
-                "basicCard": {
+            "fulfillmentMessages": [
+                "card": {
                     "title": "Hello. Good day. Please choose any of the below.",
                     "buttons": [
                         {
@@ -80,6 +80,7 @@ def processRequest(req):
                         }
                     ]
                 }
+            ]
         }
     
     else:
