@@ -60,6 +60,28 @@ def processRequest(req):
         return {
             "fulfillmentText": fulfillmentText
         }
+    if (intent == 'Welcome_Intent'):
+        return {
+            "fulfillmentText":
+                "card": {
+                "title": "Hello. Good day. Please choose any of the below.",
+                "buttons": [
+                    {
+                    "text": "Need advise.",
+                    "postback": "Advise"
+                    },
+                    {
+                    "text": "Consultation",
+                    "postback": "Consultation"
+                    },
+                    {
+                    "text": "Book Appointment ?",
+                    "postback": "Appointment"
+                    }
+                ]
+                }
+        }
+    
     else:
         log.write_log(sessionID, "Bot Says: " + result.fulfillmentText)
 
