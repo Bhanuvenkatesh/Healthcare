@@ -64,21 +64,21 @@ def processRequest(req):
         return {
             "fulfillmentText":
                 "card": {
-                "title": "Hello. Good day. Please choose any of the below.",
-                "buttons": [
-                    {
-                    "text": "Need advise.",
-                    "postback": "Advise"
-                    },
-                    {
-                    "text": "Consultation",
-                    "postback": "Consultation"
-                    },
-                    {
-                    "text": "Book Appointment ?",
-                    "postback": "Appointment"
-                    }
-                ]
+                    "title": "Hello. Good day. Please choose any of the below.",
+                    "buttons": [
+                        {
+                        "text": "Need advise.",
+                        "postback": "Advise"
+                        },
+                        {
+                        "text": "Consultation",
+                        "postback": "Consultation"
+                        },
+                        {
+                        "text": "Book Appointment ?",
+                        "postback": "Appointment"
+                        }
+                    ]
                 }
         }
     
