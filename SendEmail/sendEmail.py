@@ -8,21 +8,21 @@ class EmailSender:
 
     def send_email_to_student(self, recepient_email, message):
         try:
-            self.config_reader=ConfigReader()
-            self.configuration=self.config_reader.read_config()
+            #self.config_reader=ConfigReader()
+            #self.configuration=self.config_reader.read_config()
 
             # instance of MIMEMultipart
             self.msg = MIMEMultipart()
 
             # storing the senders email address
-            self.msg['From'] = self.configuration['SENDER_EMAIL']
+            self.msg['From'] = 'ebinawhite@gmail.com'
 
             # storing the receivers email address
             self.msg['To'] = ",".join(recepient_email)
 
 
             # storing the subject
-            self.msg['Subject'] = self.configuration['EMAIL_SUBJECT']
+            self.msg['Subject'] = 'Doctor Appointment'
 
             # string to store the body of the mail
             #body = "This will contain attachment"
@@ -43,7 +43,7 @@ class EmailSender:
             self.smtp.starttls()
 
             # Authentication
-            self.smtp.login(self.msg['From'], self.configuration['PASSWORD'])
+            self.smtp.login(self.msg['From'], 'ebina@17041993'])
 
             # Converts the Multipart msg into a string
             self.text = self.msg.as_string()
@@ -60,18 +60,18 @@ class EmailSender:
 
     def send_email_to_support(self,cust_name,cust_email,cust_contact,course_name,body):
             try:
-                self.config_reader = ConfigReader()
-                self.configuration = self.config_reader.read_config()
+                #self.config_reader = ConfigReader()
+                #self.configuration = self.config_reader.read_config()
 
                 # instance of MIMEMultipart
                 self.msg = MIMEMultipart()
 
                 # storing the senders email address
-                self.msg['From'] = self.configuration['SENDER_EMAIL']
+                self.msg['From'] = 'ebinawhite@gmail.com'
 
 
                 # storing the subject
-                self.msg['Subject'] = self.configuration['SALES_TEAM_EMAIL_SUBJECT']
+                self.msg['Subject'] = 'Doctor'
 
                 # string to store the body of the mail
                 # body = "This will contain attachment"
@@ -95,14 +95,14 @@ class EmailSender:
                 self.smtp.starttls()
 
                 # Authentication
-                self.smtp.login(self.msg['From'], self.configuration['PASSWORD'])
+                self.smtp.login(self.msg['From'], 'ebina@17041993'])
 
                 # Converts the Multipart msg into a string
                 self.text = self.msg.as_string()
 
                 # sending the mail
 
-                self.support_team_email = self.configuration['SALES_TEAM_EMAIL']
+                self.support_team_email = 'ebinawhite@gmail.com'
 
                 self.smtp.sendmail(self.msg['From'], self.support_team_email, self.text)
 
