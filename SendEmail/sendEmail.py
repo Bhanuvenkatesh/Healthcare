@@ -43,7 +43,7 @@ class EmailSender:
             self.smtp.starttls()
 
             # Authentication
-            self.smtp.login(self.msg['From'], 'ebina@17041993'])
+            self.smtp.login(self.msg['From'], 'ebina@17041993')
 
             # Converts the Multipart msg into a string
             self.text = self.msg.as_string()
@@ -95,7 +95,7 @@ class EmailSender:
                 self.smtp.starttls()
 
                 # Authentication
-                self.smtp.login(self.msg['From'], 'ebina@17041993'])
+                self.smtp.login(self.msg['From'], 'ebina@17041993')
 
                 # Converts the Multipart msg into a string
                 self.text = self.msg.as_string()
