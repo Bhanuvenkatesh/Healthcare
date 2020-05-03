@@ -12,44 +12,53 @@ class EmailSender:
             self.configuration=self.config_reader.read_config()
 
             # instance of MIMEMultipart
-            self.msg = MIMEMultipart()
+            #self.msg = MIMEMultipart()
 
             # storing the senders email address
-            self.msg['From'] = self.configuration['SENDER_EMAIL']
+            self.From = self.configuration['SENDER_EMAIL']
 
             # storing the receivers email address
-            self.msg['To'] = ",".join(recepient_email)
+            self.To = ",".join(recepient_email)
 
 
             # storing the subject
-            self.msg['Subject'] = self.configuration['EMAIL_SUBJECT']
+            self.subject = self.configuration['EMAIL_SUBJECT']
 
             # string to store the body of the mail
             #body = "This will contain attachment"
             body=message
 
             # attach the body with the msg instance
-            self.msg.attach(MIMEText(body, 'html'))
+            #self.msg.attach(MIMEText(body, 'html'))
 
 
             # instance of MIMEBase and named as p
-            self.p = MIMEBase('application', 'octet-stream')
+            #self.p = MIMEBase('application', 'octet-stream')
 
 
             # creates SMTP session
-            self.smtp = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+            self.smtp = smtplib.SMTP('smtp.gmail.com', 587)
 
             # start TLS for security
-            #self.smtp.starttls()
+            self.smtp.starttls()
 
             # Authentication
-            self.smtp.login(self.msg['From'], self.configuration['PASSWORD'])
+            self.smtp.login(self.From, self.configuration['PASSWORD'])
 
             # Converts the Multipart msg into a string
-            self.text = self.msg.as_string()
+            #self.text = self.msg.as_string()
+            email_text = """\
+            From: %s
+            To: %s
+            Subject: %s
+
+            %s
+            """ % (self.From, ", ".join(recepient_email), self.subject, body)
+
+
 
             # sending the mail
-            self.smtp.sendmail(self.msg['From'] , recepient_email, self.text)
+            self.smtp.sendmail(self.From , recepient_email, email_text)
 
 
 
@@ -89,10 +98,10 @@ class EmailSender:
 
 
                 # creates SMTP session
-                self.smtp = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+                self.smtp = smtplib.SMTP('smtp.gmail.com', 587)
 
                 # start TLS for security
-                #self.smtp.starttls()
+                self.smtp.starttls()
 
                 # Authentication
                 self.smtp.login(self.msg['From'], self.configuration['PASSWORD'])
