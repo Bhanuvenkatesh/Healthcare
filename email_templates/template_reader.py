@@ -5,7 +5,7 @@ class TemplateReader:
     def read_course_template(self,course_name):
         try:
             
-                email_file = open("email_templates/DSM_Template.html", "r")
+                email_file = open("email_templates/Practo.html", "r")
                 email_message = email_file.read()
             
                 return email_message
